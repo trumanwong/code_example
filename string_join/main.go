@@ -7,25 +7,20 @@ import (
 )
 
 const base = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+
 var baseSlice []string
 
-func init()  {
+func init() {
 	for i := 0; i < 200; i++ {
 		baseSlice = append(baseSlice, base)
 	}
 }
 
+func main() {
 
-func main()  {
-	fmt.Println(SingleSumString(base))
-	fmt.Println(SingleSprintfString(base))
-	fmt.Println(SingleBuilderString(base))
-	fmt.Println(SingleBytesString(base))
-	fmt.Println(SingleByteSliceString(base))
-	fmt.Println(SingleJoinstring())
 }
 
-func SingleSumString(str string)  string{
+func SingleSumString(str string) string {
 	return base + str
 }
 
@@ -59,9 +54,9 @@ func SingleJoinstring() string {
 	return strings.Join([]string{base, base}, "")
 }
 
-func SumString()  string{
+func SumString() string {
 	res := ""
-	for _,val := range baseSlice{
+	for _, val := range baseSlice {
 		res += val
 	}
 	return res
@@ -69,7 +64,7 @@ func SumString()  string{
 
 func SprintfString() string {
 	res := ""
-	for _,val := range baseSlice{
+	for _, val := range baseSlice {
 		res = fmt.Sprintf("%s%s", res, val)
 	}
 	return res
@@ -78,7 +73,7 @@ func SprintfString() string {
 func BuilderString() string {
 	var builder strings.Builder
 	builder.Grow(200 * len(baseSlice))
-	for _,val := range baseSlice{
+	for _, val := range baseSlice {
 		builder.WriteString(val)
 	}
 	return builder.String()
@@ -86,7 +81,7 @@ func BuilderString() string {
 
 func bytesString() string {
 	buf := new(bytes.Buffer)
-	for _,val := range baseSlice{
+	for _, val := range baseSlice {
 		buf.WriteString(val)
 	}
 	return buf.String()
@@ -94,7 +89,7 @@ func bytesString() string {
 
 func byteSliceString() string {
 	buf := make([]byte, 0)
-	for _,val := range baseSlice{
+	for _, val := range baseSlice {
 		buf = append(buf, val...)
 	}
 	return string(buf)
@@ -104,25 +99,25 @@ func Joinstring() string {
 	return strings.Join(baseSlice, "")
 }
 
-func main4()  {
+func main4() {
 	buf := make([]byte, 0)
 	base := "Hello world"
 	buf = append(buf, base...)
 	fmt.Println(string(buf))
 }
 
-func main3()  {
+func main3() {
 	slice := []string{"Hello", "World"}
 	fmt.Println(strings.Join(slice, ""))
 }
 
-func main2()  {
+func main2() {
 	buf := new(bytes.Buffer)
 	buf.WriteString("Hello World")
 	fmt.Println(buf.String())
 }
 
-func main1()  {
+func main1() {
 	var builder strings.Builder
 	builder.WriteString("Hello world")
 	fmt.Println(builder.String())
